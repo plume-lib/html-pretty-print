@@ -41,3 +41,8 @@ dependencies {
 // Define the main class for the application
 mainClassName = 'HtmlPrettyPrint'
 
+// Turn Javadoc warnings into errors.
+javadoc {
+  options.addStringOption('Xmaxwarns', '10000')
+  options.addStringOption('Xwerror', '-quiet')
+}
