@@ -2,7 +2,7 @@
 
 Pretty-prints an HTML file, after converting it to valid XML. To use:
 
-```java plume.HtmlPrettyPrint file.html > filepp.html```
+```java -jar build/libs/html-pretty-print-all.jar file.html > filepp.html```
 
 Note: HTML is not necessarily required to be valid XML.
 Therefore, this program may make more fixes than are necessary
