@@ -7,6 +7,9 @@
  */
 
 plugins {
+  // To make build/libs/options-all.jar, run: gradle shadowJar
+  id 'com.github.johnrengelman.shadow' version '2.0.2'
+
   // Code formatting with Google Java Format; use targets "goJF" and "verJF".
   id "com.github.sherter.google-java-format" version "0.7.1"
 }
@@ -39,10 +42,9 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'HtmlPrettyPrint'
+mainClassName = 'org.plumelib.htmlprettyprint.HtmlPrettyPrint'
 
 // Turn Javadoc warnings into errors.
 javadoc {
-  options.addStringOption('Xmaxwarns', '10000')
   options.addStringOption('Xwerror', '-quiet')
 }
