@@ -27,7 +27,7 @@ repositories {
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
-    implementation 'com.google.guava:guava:20.0'
+    implementation 'com.google.guava:guava:27.0.1-jre'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
@@ -37,6 +37,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/xom/xom
     implementation group: 'xom', name: 'xom', version: '1.2.5'
+
+    errorprone 'com.google.errorprone:error_prone_core:2.3.3'
 }
 
 // Define the main class for the application
