@@ -50,9 +50,6 @@ javadoc {
   options.addStringOption('private', '-quiet')
 }
 
-configurations {
-  requireJavadoc
-}
 dependencies {
   implementation group: 'org.plumelib', name: 'require-javadoc', version: '0.1.0'
 }
