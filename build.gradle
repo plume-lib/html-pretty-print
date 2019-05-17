@@ -1,8 +1,12 @@
 plugins {
   // To create a fat jar build/libs/html-pretty-print-all.jar, run: ./gradlew shadowJar
   id "com.github.johnrengelman.shadow" version "4.0.2"
+
   // Run the Error Prone linter.
   id "net.ltgt.errorprone-base" version "0.0.16"
+  // Checker Framework pluggable type-checking
+  id 'org.checkerframework' version '0.3.0'
+
   // Formating is disabled due to poor handling of type annotations; wait until
   // this issue is fixed: https://github.com/google/google-java-format/issues/5
   // // Code formatting with Google Java Format; defines targets "goJF" and "verJF".
@@ -16,7 +20,22 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 // Checker Framework pluggable type-checking
-apply from: "${buildscript.sourceFile.parent}/gradle/checkerframework.gradle"
+apply plugin: 'org.checkerframework'
+checkerFramework {
+  checkers = [
+    'org.checkerframework.checker.formatter.FormatterChecker',
+    'org.checkerframework.checker.index.IndexChecker',
+    'org.checkerframework.checker.interning.InterningChecker',
+    'org.checkerframework.checker.lock.LockChecker',
+    'org.checkerframework.checker.nullness.NullnessChecker',
+    'org.checkerframework.checker.nullness.NullnessRawnessChecker',
+    'org.checkerframework.checker.regex.RegexChecker',
+    'org.checkerframework.checker.signature.SignatureChecker'
+  ]
+  extraJavacArgs = [
+    '-AcheckPurityAnnotations'
+  ]
+}
 
 // In this section you declare where to find the dependencies of your project
 repositories {
