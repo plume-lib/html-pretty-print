@@ -70,7 +70,7 @@ javadoc {
 }
 
 dependencies {
-  implementation group: 'org.plumelib', name: 'require-javadoc', version: '0.1.0'
+  implementation group: 'org.plumelib', name: 'require-javadoc', version: '0.1.1'
 }
 task requireJavadoc(type: Javadoc) {
   description = 'Ensures that Javadoc documentation exists.'
