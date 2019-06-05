@@ -5,9 +5,9 @@ plugins {
   // Run the Error Prone linter.
   id "net.ltgt.errorprone-base" version "0.0.16"
   // Checker Framework pluggable type-checking
-  id 'org.checkerframework' version '0.3.0'
+  id 'org.checkerframework' version '0.3.4'
 
-  // Formating is disabled due to poor handling of type annotations; wait until
+  // Formatting is disabled due to poor handling of type annotations; wait until
   // this issue is fixed: https://github.com/google/google-java-format/issues/5
   // // Code formatting with Google Java Format; defines targets "goJF" and "verJF".
   // id "com.github.sherter.google-java-format" version "0.7.1"
@@ -70,7 +70,7 @@ javadoc {
 }
 
 dependencies {
-  implementation group: 'org.plumelib', name: 'require-javadoc', version: '0.1.1'
+  implementation group: 'org.plumelib', name: 'require-javadoc', version: '0.1.2'
 }
 task requireJavadoc(type: Javadoc) {
   description = 'Ensures that Javadoc documentation exists.'
