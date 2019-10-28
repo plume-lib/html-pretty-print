@@ -34,6 +34,7 @@ public final class HtmlPrettyPrint {
       String url = "file://" + f.getAbsolutePath();
 
       try {
+        @SuppressWarnings("deprecation") // deprecated in Java 9.
         XMLReader tagsoup = XMLReaderFactory.createXMLReader("org.ccil.cowan.tagsoup.Parser");
         Builder parser = new Builder(tagsoup);
 
