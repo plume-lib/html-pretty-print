@@ -2,13 +2,14 @@ package org.plumelib.htmlprettyprint;
 
 import java.io.File;
 import java.io.IOException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParserFactory;
 import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.ParsingException;
 import nu.xom.Serializer;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
  * Pretty-prints an HTML file, after converting it to valid XML. To use:
@@ -29,12 +30,17 @@ public final class HtmlPrettyPrint {
    */
   public static void main(String[] args) {
 
+    int status = 0;
+
     for (String arg : args) {
       File f = new File(arg);
       String url = "file://" + f.getAbsolutePath();
 
       try {
-        XMLReader tagsoup = XMLReaderFactory.createXMLReader("org.ccil.cowan.tagsoup.Parser");
+        XMLReader tagsoup =
+            SAXParserFactory.newInstance("org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl", null)
+                .newSAXParser()
+                .getXMLReader();
         Builder parser = new Builder(tagsoup);
 
         // Parse the document
@@ -47,16 +53,20 @@ public final class HtmlPrettyPrint {
           serializer.write(document);
         } catch (IOException ex) {
           System.err.println(ex);
+          status = 1;
         }
+      } catch (ParserConfigurationException | SAXException ex) {
+        System.out.println(ex);
+        status = 1;
       } catch (ParsingException ex) {
         System.out.println(url + " is not well-formed.");
         throw new Error(ex);
-      } catch (SAXException ex) {
-        System.out.println("Could not load Xerces.");
-        System.out.println(ex.getMessage());
       } catch (IOException ex) {
         System.out.println("IOException:  parser could not read " + url);
+        status = 1;
       }
     }
+
+    System.exit(status);
   }
 }
