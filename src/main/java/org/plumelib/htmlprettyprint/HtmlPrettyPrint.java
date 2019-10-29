@@ -66,5 +66,7 @@ public final class HtmlPrettyPrint {
         status = 1;
       }
     }
+
+    System.exit(status);
   }
 }
