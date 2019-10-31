@@ -1,26 +1,48 @@
 plugins {
-  // To create a fat jar build/libs/html-pretty-print-all.jar, run: ./gradlew shadowJar
-  id "com.github.johnrengelman.shadow" version "5.1.0"
+  id 'java'
+  id 'application'
 
-  // Run the Error Prone linter.
-  id "net.ltgt.errorprone-base" version "0.0.16"
-  // Checker Framework pluggable type-checking
-  id 'org.checkerframework' version '0.4.8' apply false
+  // To create a fat jar build/libs/html-pretty-print-all.jar, run: ./gradlew shadowJar
+  id 'com.github.johnrengelman.shadow' version '5.1.0'
 
   // Formatting is disabled due to poor handling of type annotations; wait until
   // this issue is fixed: https://github.com/google/google-java-format/issues/5
   // // Code formatting with Google Java Format; defines targets "goJF" and "verJF".
-  // id "com.github.sherter.google-java-format" version "0.7.1"
+  // id 'com.github.sherter.google-java-format' version '0.7.1'
+
+  // Run the Error Prone linter.
+  id 'net.ltgt.errorprone-base' version '0.0.16'
+
+  // Checker Framework pluggable type-checking
+  id 'org.checkerframework' version '0.4.8' apply false
 }
 
-// Apply the java plugin to add support for Java
-apply plugin: 'java'
+repositories {
+    mavenCentral()
+}
 
-// Apply the application plugin to add support for building an application
-apply plugin: 'application'
+dependencies {
+    // This dependency is found on compile classpath of this component and consumers.
+    implementation 'com.google.guava:guava:28.1-jre'
 
-// Checker Framework pluggable type-checking
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+
+    // https://mvnrepository.com/artifact/org.ccil.cowan.tagsoup/tagsoup
+    implementation group: 'org.ccil.cowan.tagsoup', name: 'tagsoup', version: '1.2.1'
+
+    // https://mvnrepository.com/artifact/xom/xom
+    implementation group: 'xom', name: 'xom', version: '1.3.2'
+
+    errorprone 'com.google.errorprone:error_prone_core:2.3.3'
+}
+
+mainClassName = 'org.plumelib.htmlprettyprint.HtmlPrettyPrint'
+
+/// Checker Framework pluggable type-checking
+
 apply plugin: 'org.checkerframework'
+
 checkerFramework {
   checkers = [
     'org.checkerframework.checker.formatter.FormatterChecker',
@@ -50,31 +72,7 @@ if (project.hasProperty("cfLocal")) {
   }
 }
 
-// In this section you declare where to find the dependencies of your project
-repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    mavenCentral()
-}
-
-dependencies {
-    // This dependency is found on compile classpath of this component and consumers.
-    implementation 'com.google.guava:guava:28.1-jre'
-
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
-
-    // https://mvnrepository.com/artifact/org.ccil.cowan.tagsoup/tagsoup
-    implementation group: 'org.ccil.cowan.tagsoup', name: 'tagsoup', version: '1.2.1'
-
-    // https://mvnrepository.com/artifact/xom/xom
-    implementation group: 'xom', name: 'xom', version: '1.3.2'
-
-    errorprone 'com.google.errorprone:error_prone_core:2.3.3'
-}
-
-// Define the main class for the application
-mainClassName = 'org.plumelib.htmlprettyprint.HtmlPrettyPrint'
+/// Javadoc
 
 // Turn Javadoc warnings into errors.
 javadoc {
@@ -83,7 +81,7 @@ javadoc {
 }
 
 dependencies {
-  implementation group: 'org.plumelib', name: 'require-javadoc', version: '0.1.2'
+  compileOnly group: 'org.plumelib', name: 'require-javadoc', version: '0.1.2'
 }
 task requireJavadoc(type: Javadoc) {
   description = 'Ensures that Javadoc documentation exists.'
@@ -94,6 +92,8 @@ task requireJavadoc(type: Javadoc) {
   options.docletpath = project.sourceSets.main.compileClasspath as List
   options.doclet = "org.plumelib.javadoc.RequireJavadoc"
 }
+
+/// Emacs support
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {
