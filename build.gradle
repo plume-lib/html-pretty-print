@@ -92,6 +92,7 @@ task requireJavadoc(type: Javadoc) {
   options.docletpath = project.sourceSets.main.compileClasspath as List
   options.doclet = "org.plumelib.javadoc.RequireJavadoc"
 }
+check.dependsOn requireJavadoc
 
 /// Emacs support
 
