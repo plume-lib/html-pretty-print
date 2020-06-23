@@ -25,8 +25,8 @@ dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     implementation 'com.google.guava:guava:29.0-jre'
 
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
     // https://mvnrepository.com/artifact/org.ccil.cowan.tagsoup/tagsoup
     implementation group: 'org.ccil.cowan.tagsoup', name: 'tagsoup', version: '1.2.1'
@@ -39,6 +39,13 @@ dependencies {
 
 application {
   mainClassName = 'org.plumelib.htmlprettyprint.HtmlPrettyPrint'
+}
+
+test {
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
+        excludeEngines 'junit-vintage'
+    }
 }
 
 /// Error Prone linter
