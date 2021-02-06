@@ -25,7 +25,7 @@ dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     implementation 'com.google.guava:guava:30.1-jre'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
     // https://mvnrepository.com/artifact/org.ccil.cowan.tagsoup/tagsoup
