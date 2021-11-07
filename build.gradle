@@ -34,7 +34,7 @@ dependencies {
     // https://mvnrepository.com/artifact/xom/xom
     implementation group: 'xom', name: 'xom', version: '1.3.7'
 
-    errorprone 'com.google.errorprone:error_prone_core:2.9.0'
+    errorprone 'com.google.errorprone:error_prone_core:2.10.0'
 }
 
 application {
@@ -51,7 +51,7 @@ test {
 /// Error Prone linter
 
 dependencies {
-  errorprone("com.google.errorprone:error_prone_core:2.8.1")
+  errorprone("com.google.errorprone:error_prone_core:2.10.0")
   // JDK 8 support for Error Prone:
   errorproneJavac("com.google.errorprone:javac:9+181-r4173-1")
 }
