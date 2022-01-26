@@ -11,10 +11,15 @@ plugins {
   // id 'com.github.sherter.google-java-format' version '0.7.1'
 
   // Error Prone linter
-  id("net.ltgt.errorprone") version "2.0.2"
+  id("net.ltgt.errorprone") version "2.0.2" apply false
 
   // Checker Framework pluggable type-checking
   id 'org.checkerframework' version '0.6.7'
+}
+
+if (JavaVersion.current() != JavaVersion.VERSION_1_8) {
+  // Error Prone linter
+  apply plugin: "net.ltgt.errorprone"
 }
 
 repositories {
@@ -33,8 +38,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/xom/xom
     implementation group: 'xom', name: 'xom', version: '1.3.7'
-
-    errorprone 'com.google.errorprone:error_prone_core:2.10.0'
 }
 
 application {
@@ -50,16 +53,16 @@ test {
 
 /// Error Prone linter
 
+if (JavaVersion.current() != JavaVersion.VERSION_1_8) {
 dependencies {
-  errorprone("com.google.errorprone:error_prone_core:2.10.0")
-  // JDK 8 support for Error Prone:
-  errorproneJavac("com.google.errorprone:javac:9+181-r4173-1")
+  errorprone("com.google.errorprone:error_prone_core:2.11.0")
 }
 tasks.withType(JavaCompile).configureEach {
   options.compilerArgs << "-Xlint:all" << "-Werror"
   options.errorprone {
     disable("ReferenceEquality") // Use Interning Checker instead.
   }
+}
 }
 
 /// Checker Framework pluggable type-checking
