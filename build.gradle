@@ -2,7 +2,7 @@ plugins {
   id 'java'
   id 'application'
 
-  // To create a fat jar build/libs/html-pretty-print-all.jar, run: ./gradlew shadowJar
+  // To create a fat jar build/libs/...-all.jar, run: ./gradlew shadowJar
   id 'com.github.johnrengelman.shadow' version '7.1.2'
 
   // Code formatting; defines targets "spotlessApply" and "spotlessCheck"
@@ -16,32 +16,34 @@ plugins {
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    // This dependency is found on compile classpath of this component and consumers.
-    implementation 'com.google.guava:guava:31.1-jre'
+  implementation 'com.google.guava:guava:31.1-jre'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
-    // https://mvnrepository.com/artifact/org.ccil.cowan.tagsoup/tagsoup
-    implementation group: 'org.ccil.cowan.tagsoup', name: 'tagsoup', version: '1.2.1'
+  // https://mvnrepository.com/artifact/org.ccil.cowan.tagsoup/tagsoup
+  implementation group: 'org.ccil.cowan.tagsoup', name: 'tagsoup', version: '1.2.1'
 
-    // https://mvnrepository.com/artifact/xom/xom
-    implementation group: 'xom', name: 'xom', version: '1.3.8'
+  // https://mvnrepository.com/artifact/xom/xom
+  implementation group: 'xom', name: 'xom', version: '1.3.8'
 }
 
 application {
   mainClass = 'org.plumelib.htmlprettyprint.HtmlPrettyPrint'
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 test {
-    useJUnitPlatform {
-        includeEngines 'junit-jupiter'
-        excludeEngines 'junit-vintage'
-    }
+  useJUnitPlatform {
+    includeEngines 'junit-jupiter'
+    excludeEngines 'junit-vintage'
+  }
 }
 
 spotless {
@@ -67,7 +69,8 @@ dependencies {
   errorprone("com.google.errorprone:error_prone_core:2.16")
 }
 tasks.withType(JavaCompile).configureEach {
-  options.compilerArgs << "-Xlint:all" << "-Werror"
+  // "-processing" avoids javac warning "No processor claimed any of these annotations".
+  options.compilerArgs << "-Xlint:all,-processing" << "-Werror"
   options.errorprone {
     enabled = JavaVersion.current() != JavaVersion.VERSION_1_8
     disable("ReferenceEquality") // Use Interning Checker instead.
@@ -117,6 +120,17 @@ if (project.hasProperty("cfLocal")) {
 javadoc {
   options.addStringOption('Xwerror', '-Xdoclint:all')
   options.addStringOption('private', '-quiet')
+  if (JavaVersion.current().compareTo(org.gradle.api.JavaVersion.VERSION_1_9) >= 0) {
+    options.addStringOption('source', '8')
+  }
+  doLast {
+    if (JavaVersion.current() == JavaVersion.VERSION_1_8) {
+      ant.replaceregexp(match:"@import url\\('resources/fonts/dejavu.css'\\);\\s*", replace:'',
+        flags:'g', byline:true) {
+        fileset(dir: destinationDir)
+      }
+    }
+  }
 }
 check.dependsOn javadoc
 
