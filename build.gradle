@@ -21,15 +21,11 @@ repositories {
 
 dependencies {
   implementation 'com.google.guava:guava:31.1-jre'
+  implementation 'org.ccil.cowan.tagsoup:tagsoup:1.2.1'
+  implementation 'xom:xom:1.3.8'
 
   testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-
-  // https://mvnrepository.com/artifact/org.ccil.cowan.tagsoup/tagsoup
-  implementation group: 'org.ccil.cowan.tagsoup', name: 'tagsoup', version: '1.2.1'
-
-  // https://mvnrepository.com/artifact/xom/xom
-  implementation group: 'xom', name: 'xom', version: '1.3.8'
 }
 
 application {
