@@ -1,0 +1,10 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":automergeAll",
+    ":automergeRequireAllStatusChecks",
+    "schedule:automergeNonOfficeHours"
+  ],
+  "timezone": "America/Los_Angeles"
+}
