@@ -4,7 +4,7 @@
     "config:base",
     ":automergeAll",
     ":automergeRequireAllStatusChecks",
-    "schedule:automergeNonOfficeHours"
+    "schedule:nonOfficeHours"
   ],
   "timezone": "America/Los_Angeles"
 }
