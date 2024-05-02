@@ -21,7 +21,7 @@ repositories {
   maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
-ext.errorproneVersion = '2.27.0'
+ext.errorproneVersion = '2.27.1'
 
 dependencies {
   implementation 'com.google.guava:guava:33.1.0-jre'
