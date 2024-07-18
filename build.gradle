@@ -21,7 +21,7 @@ repositories {
   maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
-ext.errorproneVersion = '2.29.0'
+ext.errorproneVersion = '2.29.1'
 
 dependencies {
   implementation 'org.ccil.cowan.tagsoup:tagsoup:1.2.1'
