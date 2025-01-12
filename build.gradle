@@ -18,7 +18,7 @@ plugins {
 
 repositories {
   mavenCentral()
-  maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+  maven { url = 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 ext {
@@ -31,8 +31,8 @@ dependencies {
   implementation 'org.ccil.cowan.tagsoup:tagsoup:1.2.1'
   implementation 'xom:xom:1.3.9'
 
-  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
-  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+  testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
+  testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 application {
@@ -58,7 +58,7 @@ spotless {
 
     // define the steps to apply to those files
     trimTrailingWhitespace()
-    indentWithSpaces(2)
+    leadingTabsToSpaces(2)
     endWithNewline()
   }
   java {
@@ -69,7 +69,7 @@ spotless {
   groovyGradle {
     target '**/*.gradle'
     greclipse()  // which formatter Spotless should use to format .gradle files.
-    indentWithSpaces(2)
+    leadingTabsToSpaces(2)
     trimTrailingWhitespace()
     // endWithNewline() // Don't want to end empty files with a newline
   }
@@ -175,6 +175,6 @@ check.dependsOn requireJavadoc
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {
-  description 'Run etags to create an Emacs TAGS table'
+  description = 'Run etags to create an Emacs TAGS table'
   commandLine 'bash', '-c', "find src/ -name '*.java' | sort | xargs etags"
 }
