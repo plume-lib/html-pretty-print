@@ -17,8 +17,10 @@ plugins {
 }
 
 repositories {
+  gradlePluginPortal()
   mavenCentral()
-  maven { url = 'https://central.sonatype.com/repository/maven-snapshots/' }
+  maven { url = "https://central.sonatype.com/repository/maven-snapshots/" }
+  gradlePluginPortal()
 }
 
 ext {
@@ -169,7 +171,7 @@ configurations {
 dependencies {
   requireJavadoc 'org.plumelib:require-javadoc:2.0.0'
 }
-task requireJavadoc(type: JavaExec) {
+tasks.register("requireJavadoc", JavaExec) {
   group = 'Documentation'
   description = 'Ensures that Javadoc documentation exists.'
   mainClass = 'org.plumelib.javadoc.RequireJavadoc'
@@ -191,7 +193,7 @@ check.dependsOn requireJavadoc
 // Emacs support
 
 /* Make Emacs TAGS table */
-task tags(type: Exec) {
+tasks.register("tags", Exec) {
   description = 'Run etags to create an Emacs TAGS table'
   commandLine 'bash', '-c', "find src/ -name '*.java' | sort | xargs etags"
 }
