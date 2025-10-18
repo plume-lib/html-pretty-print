@@ -5,4 +5,4 @@ buildscript {
 }
 
 // Project name is read-only in build scripts, and defaults to directory name.
-rootProject.name = 'html-pretty-print'
+rootProject.name = "html-pretty-print"
