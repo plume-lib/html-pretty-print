@@ -4,5 +4,5 @@ buildscript {
   }
 }
 
-// Project name is read-only in build scripts, and defaults to directory name.
+plugins {    id("de.fayard.refreshVersions") version "0.60.6" } // Project name is read-only in build scripts, and defaults to directory name.
 rootProject.name = "html-pretty-print"

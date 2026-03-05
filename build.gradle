@@ -3,14 +3,14 @@ plugins {
   id("application")
 
   // To create a fat jar build/libs/...-all.jar, run: ./gradlew shadowJar
-  id("com.gradleup.shadow").version("9.3.2")
+  alias(libs.plugins.com.gradleup.shadow)
 
   // Code formatting; defines targets "spotlessApply" and "spotlessCheck"
   // Version 8.0.0 and later requires Java 17+.
-  id("com.diffplug.spotless").version("8.3.0")
+  alias(libs.plugins.com.diffplug.spotless)
 
   // Error Prone linter
-  id("net.ltgt.errorprone").version("5.1.0") apply false
+  alias(libs.plugins.net.ltgt.errorprone) apply false
 
   // PMD linter
   id("pmd")
@@ -19,7 +19,7 @@ plugins {
   id("jacoco")
 
   // Checker Framework pluggable type-checking
-  id("org.checkerframework").version("1.0.2")
+  alias(libs.plugins.org.checkerframework)
 }
 
 repositories {
@@ -36,11 +36,11 @@ ext {
 }
 
 dependencies {
-  implementation("org.ccil.cowan.tagsoup:tagsoup:1.2.1")
+  implementation(libs.tagsoup)
   implementation("xom:xom:1.3.9")
 
-  testImplementation("org.junit.jupiter:junit-jupiter:6.0.3")
-  testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+  testImplementation(libs.junit.jupiter)
+  testRuntimeOnly(libs.junit.platform.launcher)
 }
 
 application {
@@ -118,7 +118,7 @@ tasks.withType(JavaCompile).configureEach {
 if (isJava21orHigher) {
   apply plugin: "net.ltgt.errorprone"
   dependencies {
-    errorprone("com.google.errorprone:error_prone_core:${errorproneVersion}")
+    errorprone(libs.error.prone.core)
   }
   tasks.withType(JavaCompile).configureEach {
     options.errorprone {
@@ -231,7 +231,7 @@ configurations {
   requireJavadoc
 }
 dependencies {
-  requireJavadoc("org.plumelib:require-javadoc:2.0.0")
+  requireJavadoc(libs.require.javadoc)
 }
 def requireJavadoc = tasks.register("requireJavadoc", JavaExec) {
   group = "Documentation"
