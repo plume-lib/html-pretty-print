@@ -6,7 +6,6 @@ plugins {
   alias(libs.plugins.com.gradleup.shadow)
 
   // Code formatting; defines targets "spotlessApply" and "spotlessCheck"
-  // Version 8.0.0 and later requires Java 17+.
   alias(libs.plugins.com.diffplug.spotless)
 
   // Error Prone linter
@@ -42,8 +41,8 @@ application {
 }
 
 java {
-  sourceCompatibility = JavaVersion.VERSION_11
-  targetCompatibility = JavaVersion.VERSION_11
+  sourceCompatibility = JavaVersion.VERSION_21
+  targetCompatibility = JavaVersion.VERSION_21
 }
 
 test {
@@ -116,10 +115,7 @@ tasks.withType(JavaCompile).configureEach {
     disable("EffectivelyPrivate") // Loses information about the abstraction.
     disable("ExtendsObject")  // Incorrect when using the Checker Framework.
     disable("InlineMeSuggester") // Using `@InlineMe` requires clients to declare a dependency on error_prone_annotations.
-    disable("PatternMatchingInstanceof") // requires Java 16 or later
     disable("ReferenceEquality") // Use Interning Checker instead.
-    disable("StatementSwitchToExpressionSwitch") // requires Java 12 or later
-    disable("StringConcatToTextBlock") // requires Java 15 or later
   }
 }
 
@@ -177,7 +173,6 @@ javadoc {
   // Turn Javadoc warnings into errors.
   options.addStringOption("Xwerror", "-Xdoclint:all")
   options.addStringOption("private", "-quiet")
-  options.addStringOption("source", "11")
   doLast {
     ant.replaceregexp(match:"@import url\\('resources/fonts/dejavu.css'\\);\\s*", replace:"",
     flags:"g", byline:true) {
@@ -195,7 +190,6 @@ tasks.register("javadocWebUpload", Javadoc) {
   source = sourceSets.main.allJava
   destinationDir = file("/cse/web/research/plumelib/${project.name}/api")
   classpath = project.sourceSets.main.compileClasspath
-  options.addStringOption("source", "11")
   doLast {
     ant.replaceregexp(match:"@import url\\('resources/fonts/dejavu.css'\\);\\s*", replace:"",
     flags:"g", byline:true) {
