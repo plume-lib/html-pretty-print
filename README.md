@@ -1,4 +1,4 @@
-# html-pretty-print #
+# html-pretty-print
 
 Pretty-prints an HTML file, after converting it to valid XML. To use:
 
