@@ -32,9 +32,12 @@ public final class HtmlPrettyPrint {
 
     int status = 0;
 
+    Serializer serializer = new Serializer(System.out);
+    serializer.setIndent(2);
+    serializer.setMaxLength(80);
+
     for (String arg : args) {
-      File f = new File(arg);
-      String url = "file://" + f.getAbsolutePath();
+      String url = new File(arg).toURI().toString();
 
       try {
         XMLReader tagsoup =
@@ -43,12 +46,8 @@ public final class HtmlPrettyPrint {
                 .getXMLReader();
         Builder parser = new Builder(tagsoup);
 
-        // Parse the document
         Document document = parser.build(url);
 
-        Serializer serializer = new Serializer(System.out);
-        serializer.setIndent(2);
-        serializer.setMaxLength(80);
         try {
           serializer.write(document);
         } catch (IOException ex) {
@@ -56,13 +55,13 @@ public final class HtmlPrettyPrint {
           status = 1;
         }
       } catch (ParserConfigurationException | SAXException ex) {
-        System.out.println(ex);
+        System.err.println(ex);
         status = 1;
       } catch (ParsingException ex) {
-        System.out.println(url + " is not well-formed.");
+        System.err.println(url + " is not well-formed.");
         throw new Error(ex);
       } catch (IOException ex) {
-        System.out.println("IOException:  parser could not read " + url);
+        System.err.println("IOException: parser could not read " + url);
         status = 1;
       }
     }
