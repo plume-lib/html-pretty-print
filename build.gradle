@@ -48,7 +48,7 @@ java {
   }
 }
 tasks.withType(JavaCompile).configureEach {
-  // Set the language level and byte code to 17.
+  // Set the language level and bytecode to 17.
   options.release = 17
 }
 
