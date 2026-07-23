@@ -123,7 +123,7 @@
 
     <!-- code style rules that seem to be broken
     <rule ref="category/java/codestyle.xml/UnnecessaryCast" />  This is issued even if there is a type qualifier in the cast.
-    <rule ref="category/java/codestyle.xml/UnnecessaryConstructor" />  This is issued even though doclint requires there is no default constructor (it must be explicit).
+    <rule ref="category/java/codestyle.xml/UnnecessaryConstructor" />  This is issued even though doclint requires that there be no default constructor (it must be explicit).
     <rule ref="category/java/codestyle.xml/IdenticalCatchBranches" />
      -->
 
