@@ -86,5 +86,6 @@ public final class HtmlPrettyPrint {
       throws ParsingException, IOException {
     Document document = parser.build(url);
     serializer.write(document);
+    serializer.flush();
   }
 }
