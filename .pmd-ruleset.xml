@@ -355,7 +355,7 @@
     <!-- performance rules we are not using
     <rule ref="category/java/performance.xml/AvoidInstantiatingObjectsInLoops" />      Blanket prohibition on `new` in loops is too broad.
     <rule ref="category/java/performance.xml/ConsecutiveAppendsShouldReuse" />      It's not clear this helps, and "fluent" appends are harder to read.
-    <rule ref="category/java/performance.xml/RedundantFieldInitializer" />  Explicit initializers are better style
+    <rule ref="category/java/performance.xml/RedundantFieldInitializer" />  Explicit initializers are better style.
     <rule ref="category/java/performance.xml/TooFewBranchesForSwitch" />
     <rule ref="category/java/performance.xml/UseStringBufferForStringAppends" />
      -->
