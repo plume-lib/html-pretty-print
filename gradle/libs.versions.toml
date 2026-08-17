@@ -48,7 +48,7 @@ xom = { module = "xom:xom", version = "1.4.6" }
 
 [plugins]
 
-com-diffplug-spotless = { id = "com.diffplug.spotless", version = "8.9.0" }
+com-diffplug-spotless = { id = "com.diffplug.spotless", version = "8.10.0" }
 
 com-gradleup-shadow = { id = "com.gradleup.shadow", version = "9.6.1" }
 
