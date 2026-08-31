@@ -20,7 +20,7 @@ public final class HtmlPrettyPrint {
 
   /** This class is a collection of methods; it does not represent anything. */
   private HtmlPrettyPrint() {
-    throw new Error("do not instantiate");
+    throw new UnsupportedOperationException("do not instantiate");
   }
 
   /**
@@ -40,6 +40,7 @@ public final class HtmlPrettyPrint {
 
     int status = 0;
     for (String arg : args) {
+      @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
       String url = new File(arg).toURI().toString();
 
       try {
@@ -61,7 +62,7 @@ public final class HtmlPrettyPrint {
    *
    * @return an HTML parser
    */
-  static Builder makeParser() {
+  /*package*/ static Builder makeParser() {
     try {
       XMLReader tagsoup =
           SAXParserFactory.newInstance("org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl", null)
@@ -82,7 +83,7 @@ public final class HtmlPrettyPrint {
    * @throws ParsingException if the input is not well-formed
    * @throws IOException if there is trouble reading the input or writing the output
    */
-  static void prettyPrint(Builder parser, Serializer serializer, String url)
+  /*package*/ static void prettyPrint(Builder parser, Serializer serializer, String url)
       throws ParsingException, IOException {
     Document document = parser.build(url);
     serializer.write(document);
