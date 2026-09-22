@@ -9,13 +9,14 @@ jobs:
 
     strategy:
       matrix:
-        java: ['21', '25', '26']
+        java: ['21', '25', '27-ea']
 
     steps:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 1
           show-progress: false
+          persist-credentials: false
       - name: Set up JDK
         uses: actions/setup-java@v6
         with:
