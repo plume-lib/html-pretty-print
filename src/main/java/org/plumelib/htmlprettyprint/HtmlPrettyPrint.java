@@ -40,7 +40,7 @@ public final class HtmlPrettyPrint {
 
     int status = 0;
     for (String arg : args) {
-      @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
+      // @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
       String url = new File(arg).toURI().toString();
 
       try {
