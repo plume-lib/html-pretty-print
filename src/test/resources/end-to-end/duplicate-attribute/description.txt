@@ -1,2 +1,3 @@
 BUG: When an element has two attributes with the same name, the last one is kept; HTML
 parsers keep the first one.
+See https://github.com/plume-lib/html-pretty-print/issues/582.

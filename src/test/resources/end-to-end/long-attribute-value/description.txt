@@ -1,3 +1,4 @@
 BUG: When a line is too long, it is broken at a space within an attribute value, which
 changes the value:  an XML parser reads the line break and the indentation after it as
 several spaces.
+See https://github.com/plume-lib/html-pretty-print/issues/583.

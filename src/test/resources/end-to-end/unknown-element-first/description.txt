@@ -1,2 +1,3 @@
 BUG: When a document starts with an unknown element, that element becomes the root
 element, and no html or body element is created.
+See https://github.com/plume-lib/html-pretty-print/issues/586.

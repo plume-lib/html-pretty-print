@@ -1,3 +1,4 @@
 BUG: Attributes that the input does not have are added with their default values from the
 HTML 4 DTD:  shape="rect" on a, clear="none" on br, and colspan="1" rowspan="1" on td
 and th.
+See https://github.com/plume-lib/html-pretty-print/issues/581.

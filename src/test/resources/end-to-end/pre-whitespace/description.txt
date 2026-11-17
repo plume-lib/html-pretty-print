@@ -1,2 +1,3 @@
 BUG: The whitespace in a pre element is collapsed and its line breaks are removed, which
 changes how the document renders.
+See https://github.com/plume-lib/html-pretty-print/issues/578.

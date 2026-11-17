@@ -1,2 +1,3 @@
 BUG: The line breaks in a script element are replaced by spaces, so a JavaScript "//"
 comment comments out the code on the lines after it.
+See https://github.com/plume-lib/html-pretty-print/issues/579.

@@ -2,3 +2,4 @@ BUG: "<", ">", and "&" in script and style elements are escaped as character ent
 That is correct XML, but a browser that reads the output as HTML (as the README's example
 file name filepp.html suggests) does not unescape them, so the script and style sheet change
 meaning.
+See https://github.com/plume-lib/html-pretty-print/issues/580.
