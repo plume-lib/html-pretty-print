@@ -14,6 +14,12 @@ that cannot be read or cannot be converted, it writes an error message to standa
 continues with the next file.  Its exit status is 1 if any file could not be processed, and 0
 otherwise.  It does not read standard input and does not write any file.
 
+The error message is one line.  For a file that cannot be read, it is "Could not read or write URI:
+DETAIL", where DETAIL describes the error; DETAIL differs among platforms and implementations.  For
+a file that cannot be converted to XML, it is "URI is not well-formed.".  In both, URI is "file:"
+followed by the file's absolute path, using "/" as the separator and with each space written as
+"%20", such as "file:/tmp/dir/my%20page.html".
+
 
 Test cases
 ==========
@@ -55,8 +61,10 @@ goal file.
   goal-err-prefix.txt  What the program's standard error should start with.  Trailing whitespace,
                        including the final line separator, is removed from this file's contents
                        before the comparison.  It is used instead of goal-err.txt when the rest of
-                       the output (here, the text of a Java exception, such as "(No such file or
-                       directory)") differs among platforms.
+                       the output differs among platforms or implementations:  here, the DETAIL
+                       part of an error message for a file that cannot be read (for the Java
+                       implementation, the text of a Java exception, such as
+                       "java.io.FileNotFoundException: ... (No such file or directory)").
 
   goal-status.txt      The program's exit status, as a decimal integer.  If this file is absent,
                        the exit status should be 0.
@@ -92,6 +100,25 @@ Normalization:
    platform's file separator and with "/".  For example, if the working directory is
    /tmp/junit123, then the error message "Could not read or write file:/tmp/junit123/missing.html:
    ..." is compared as "Could not read or write file:{WORKDIR}/missing.html: ...".
+
+
+Goal files that are specific to the Java implementation
+=======================================================
+
+No goal file contains text that only Java produces, such as an exception's class name or message
+or a stack trace.  The following goal files nonetheless record the Java implementation's behavior
+where a correct implementation in another language could behave differently:
+
+ * The goal files of the test cases whose description starts with "BUG:".  They record the Java
+   implementation's incorrect behavior.
+ * goal-out.txt of long-lines, self-closing-tags, and table-implied-elements, which contain the
+   attributes that the bug of test case default-attributes adds, and goal-out.txt of
+   namespace-prefixes and unknown-elements, which contain the line breaks that the bug of test
+   case mixed-content adds.
+ * The goal files of not-well-formed and not-well-formed-among-others.  Which input cannot be
+   converted to XML depends on the HTML parser and the XML library.  The Java implementation
+   cannot convert an element whose name has the reserved prefix "xmlns"; an implementation that
+   converts such an element (for example, by renaming it) fails these test cases.
 
 
 Running the tests against another implementation
