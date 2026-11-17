@@ -1,0 +1,2 @@
+Characters that XML does not permit in names are removed from an attribute name, and an
+underscore is prepended to a name that starts with a digit.

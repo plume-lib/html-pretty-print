@@ -1,0 +1,2 @@
+Nested elements are indented 2 spaces per level, but the indentation stops increasing at
+40 columns (half the maximum line length).

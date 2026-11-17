@@ -1,0 +1,1 @@
+An empty file yields an html element that contains an empty body element.

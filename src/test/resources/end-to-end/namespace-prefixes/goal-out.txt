@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <body>
+    <p q:z="w" xml:lang="en" xmlns:q="urn:x-prefix:q">t
+      <svg:rect xmlns:svg="urn:x-prefix:svg"/>
+    </p>
+  </body>
+</html>

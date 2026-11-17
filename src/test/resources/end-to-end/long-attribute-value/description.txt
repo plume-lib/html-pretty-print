@@ -1,0 +1,3 @@
+BUG: When a line is too long, it is broken at a space within an attribute value, which
+changes the value:  an XML parser reads the line break and the indentation after it as
+several spaces.

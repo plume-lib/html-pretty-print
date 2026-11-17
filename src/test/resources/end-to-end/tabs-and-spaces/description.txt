@@ -1,0 +1,1 @@
+Runs of tabs and spaces in text are collapsed to a single space.

@@ -1,0 +1,2 @@
+A missing file does not stop the program from processing the files after it, but the exit
+status is 1.

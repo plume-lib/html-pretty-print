@@ -1,0 +1,2 @@
+BUG: When a document starts with an unknown element, that element becomes the root
+element, and no html or body element is created.

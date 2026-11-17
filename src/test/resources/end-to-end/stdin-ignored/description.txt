@@ -1,0 +1,2 @@
+The program does not read standard input:  with no arguments, it writes nothing even when
+standard input contains HTML.

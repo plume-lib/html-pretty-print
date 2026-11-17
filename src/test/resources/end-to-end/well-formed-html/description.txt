@@ -1,0 +1,2 @@
+A small, well-formed HTML document is indented by 2 spaces per level, preceded by an XML
+declaration, and its html element gets the XHTML namespace.

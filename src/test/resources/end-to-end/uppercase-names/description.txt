@@ -1,0 +1,1 @@
+Element and attribute names are converted to lower case.

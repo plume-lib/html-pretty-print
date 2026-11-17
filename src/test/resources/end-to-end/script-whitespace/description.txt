@@ -1,0 +1,2 @@
+BUG: The line breaks in a script element are replaced by spaces, so a JavaScript "//"
+comment comments out the code on the lines after it.

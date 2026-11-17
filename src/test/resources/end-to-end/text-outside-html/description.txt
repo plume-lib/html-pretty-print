@@ -1,0 +1,3 @@
+BUG: Text before the html start tag and after the html end tag yields an html element that
+contains a body element for each of those texts, with a nested html element between them,
+so the output is not valid XHTML.

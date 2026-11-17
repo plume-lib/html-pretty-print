@@ -1,0 +1,4 @@
+Text is wrapped at spaces so that lines are at most 80 characters long where possible.  A
+word or an attribute that is longer than that is not broken, so its line is longer.  A
+continuation line of text is indented 2 more spaces than its element; a continuation line
+of attributes is indented the same as its element.

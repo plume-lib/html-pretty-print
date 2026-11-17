@@ -1,0 +1,3 @@
+A prefixed attribute or element name gets a namespace URI of the form urn:x-prefix:PREFIX,
+even if the input declares the prefix.  Other namespace declarations, including a default
+namespace declaration, are removed.  The xml prefix is kept.

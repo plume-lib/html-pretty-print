@@ -1,0 +1,3 @@
+BUG: In an element that contains both text and child elements, each child element starts
+on a new line, which changes the rendered text where there was no whitespace before:  here,
+between "a link" and "adjacent", and between "adjacent" and ".".

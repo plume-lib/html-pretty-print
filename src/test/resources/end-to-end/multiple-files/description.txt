@@ -1,0 +1,2 @@
+Each file named on the command line is pretty-printed, in order, to standard output; each
+output document starts with its own XML declaration.

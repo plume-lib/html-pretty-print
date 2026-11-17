@@ -1,0 +1,3 @@
+Unquoted, single-quoted, and valueless (boolean) attributes are written as double-quoted
+XML attributes; a valueless attribute's value is its name.  Within attribute values, "<",
+">", "&", and '"' are escaped.

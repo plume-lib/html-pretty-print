@@ -1,0 +1,2 @@
+BUG: When an element has two attributes with the same name, the last one is kept; HTML
+parsers keep the first one.

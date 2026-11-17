@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <script>if (a &lt; b &amp;&amp; c) { document.write("&lt;p&gt;"); }</script>
+    <style>p &gt; a { color: red; }</style>
+  </head>
+  <body/>
+</html>
