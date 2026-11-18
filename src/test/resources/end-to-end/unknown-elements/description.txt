@@ -1,0 +1,2 @@
+Unknown elements, including HTML5 elements such as section and nav, are kept, with their
+attributes.

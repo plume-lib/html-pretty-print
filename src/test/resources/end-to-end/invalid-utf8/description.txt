@@ -1,0 +1,2 @@
+Input with no charset declaration is read as UTF-8; a byte that is not valid UTF-8 becomes
+U+FFFD REPLACEMENT CHARACTER.

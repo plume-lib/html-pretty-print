@@ -1,0 +1,2 @@
+In the error message for a missing file, a space in the file name is percent-encoded in
+the file: URI.

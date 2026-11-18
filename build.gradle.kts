@@ -117,8 +117,18 @@ if (testJavaVersionProperty != null && testJavaVersionProperty.toString().isEmpt
 val testJavaVersion =
   JavaLanguageVersion.of((testJavaVersionProperty ?: JavaVersion.current().majorVersion).toString())
 
+// The end-to-end tests (see src/test/resources/end-to-end/README.txt) run this project's program by
+// default.  To run them against another implementation of the program instead, pass the command
+// that runs it, as in:
+//   ./gradlew test --tests '*EndToEndTest' -Pe2e.command="python3 /path/to/htmlpp.py"
+val e2eCommand = project.findProperty("e2e.command")?.toString()
+
 tasks.withType<Test>().configureEach {
   javaLauncher = javaToolchains.launcherFor { languageVersion = testJavaVersion }
+
+  if (e2eCommand != null) {
+    systemProperty("e2e.command", e2eCommand)
+  }
 
   useJUnitPlatform {
     includeEngines("junit-jupiter")

@@ -1,0 +1,2 @@
+The program has no command-line options:  an argument that looks like an option is treated
+as a file name.

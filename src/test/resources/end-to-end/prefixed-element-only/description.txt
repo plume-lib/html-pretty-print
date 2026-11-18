@@ -1,0 +1,2 @@
+A document that consists of a single prefixed element is not wrapped in html and body
+elements.

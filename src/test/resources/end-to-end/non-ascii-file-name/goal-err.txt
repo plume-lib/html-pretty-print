@@ -1,0 +1,1 @@
+file:{WORKDIR}/input/naïve.html is not well-formed.

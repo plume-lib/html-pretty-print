@@ -1,0 +1,1 @@
+CRLF line separators in the input are treated like any other whitespace.

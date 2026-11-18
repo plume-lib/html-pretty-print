@@ -1,0 +1,1 @@
+Pretty-printing the program's own output yields the same output.

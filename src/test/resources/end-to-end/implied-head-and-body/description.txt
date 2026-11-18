@@ -1,0 +1,1 @@
+A head element is created for a title element, and a body element for the text.

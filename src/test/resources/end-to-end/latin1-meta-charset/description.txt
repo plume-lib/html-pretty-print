@@ -1,0 +1,3 @@
+BUG: The charset declared by a meta element is ignored.  The input is ISO-8859-1, but it
+is read as UTF-8, so the byte for "é" becomes U+FFFD REPLACEMENT CHARACTER.
+See https://github.com/plume-lib/html-pretty-print/issues/587.

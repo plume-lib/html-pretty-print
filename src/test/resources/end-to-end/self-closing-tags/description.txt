@@ -1,0 +1,2 @@
+A "/>" on a void element such as br is accepted; on a non-void element such as p or div,
+it makes the element empty.  An empty element is written as "<name/>".

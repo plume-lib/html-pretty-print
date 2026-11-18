@@ -1,0 +1,1 @@
+A file name that contains "." and ".." segments names the file it resolves to.

@@ -1,0 +1,1 @@
+With no arguments, the program writes nothing and exits with status 0.

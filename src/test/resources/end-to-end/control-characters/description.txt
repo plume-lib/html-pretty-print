@@ -1,0 +1,1 @@
+Control characters that XML 1.0 forbids (here, U+0001 and U+000B) are removed.

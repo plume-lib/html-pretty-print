@@ -1,0 +1,1 @@
+A file that contains only spaces, tabs, and newlines yields the same output as an empty file.

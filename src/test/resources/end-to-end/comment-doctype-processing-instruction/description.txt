@@ -1,0 +1,2 @@
+A document type declaration, comments, and processing instructions are kept.  A "--"
+within a comment, which XML forbids, becomes "- -".

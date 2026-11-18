@@ -1,0 +1,1 @@
+A CDATA section in HTML content becomes ordinary (escaped) text.

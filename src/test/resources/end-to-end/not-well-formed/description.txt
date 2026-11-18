@@ -1,0 +1,2 @@
+Input that cannot be converted to XML (here, an element named with the reserved prefix
+"xmlns") yields the message "<URI> is not well-formed.", no output, and exit status 1.

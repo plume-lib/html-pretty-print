@@ -1,0 +1,4 @@
+BUG: A file whose name contains a non-ASCII character (here, "ï") cannot be read,
+and the program misleadingly reports that it is not well-formed.  The program runs with
+LC_ALL=C.UTF-8.
+See https://github.com/plume-lib/html-pretty-print/issues/577.

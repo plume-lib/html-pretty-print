@@ -1,0 +1,2 @@
+Non-ASCII UTF-8 characters, including one outside the Basic Multilingual Plane, are
+written unchanged, in UTF-8.

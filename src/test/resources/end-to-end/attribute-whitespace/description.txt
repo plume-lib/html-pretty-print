@@ -1,0 +1,1 @@
+A newline or tab in an attribute value becomes a space.

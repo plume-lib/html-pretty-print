@@ -1,0 +1,4 @@
+BUG: A directory named on the command line is not reported as an error.  Instead, the
+program pretty-prints the directory listing (the names of the files in the directory) as if
+it were the text of an HTML file.
+See https://github.com/plume-lib/html-pretty-print/issues/576.

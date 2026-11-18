@@ -1,0 +1,1 @@
+End tags that HTML permits to be omitted (here, td and tr) are supplied.

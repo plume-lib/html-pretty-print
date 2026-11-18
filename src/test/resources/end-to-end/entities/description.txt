@@ -1,0 +1,3 @@
+Character entity and numeric character references are converted to characters.  "&", "<",
+and ">" are written as "&amp;", "&lt;", and "&gt;".  An unknown entity reference and a
+bare "&" or "<" are kept as text.

@@ -1,0 +1,2 @@
+A file that is not well-formed does not stop the program from processing the files after it,
+but the exit status is 1.

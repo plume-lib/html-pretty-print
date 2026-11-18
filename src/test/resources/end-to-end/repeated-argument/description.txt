@@ -1,0 +1,1 @@
+A file that is named twice is pretty-printed twice.
