@@ -27,5 +27,7 @@ jobs:
           cache: 'gradle'
       - name: java -version
         run: java -version
+      - name: Clone plume-scripts
+        run: git clone --depth 1 -q https://github.com/plume-lib/plume-scripts.git "${{ runner.temp }}/plume-scripts"
       - name: ./gradlew build
-        run: .github/gradlew-retry.sh build
+        run: ${{ runner.temp }}/plume-scripts/gradlew-retry build
