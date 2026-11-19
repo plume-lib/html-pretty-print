@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         java: ['21', '25', '27-ea']
 
@@ -27,6 +28,9 @@ jobs:
       - name: java -version
         run: java -version
       - name: Warm up Gradle cache
-        run: ./gradlew spotlessCheck > /dev/null 2>&1 || (sleep 60 && true)
+        run: >-
+          ./gradlew --quiet spotlessCheck
+          || (sleep 60 && ./gradlew --quiet --refresh-dependencies spotlessCheck)
+          || true
       - name: ./gradlew build
         run: ./gradlew build
