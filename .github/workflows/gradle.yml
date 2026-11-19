@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         java: ['21', '25', '27-ea']
 
@@ -26,7 +27,7 @@ jobs:
           cache: 'gradle'
       - name: java -version
         run: java -version
-      - name: Warm up Gradle cache
-        run: ./gradlew spotlessCheck > /dev/null 2>&1 || (sleep 60 && true)
+      - name: Clone plume-scripts
+        run: git clone --depth 1 -q https://github.com/plume-lib/plume-scripts.git "${{ runner.temp }}/plume-scripts"
       - name: ./gradlew build
-        run: ./gradlew build
+        run: ${{ runner.temp }}/plume-scripts/gradlew-retry build
