@@ -27,10 +27,5 @@ jobs:
           cache: 'gradle'
       - name: java -version
         run: java -version
-      - name: Warm up Gradle cache
-        run: >-
-          ./gradlew --quiet spotlessCheck
-          || (sleep 60 && ./gradlew --quiet --refresh-dependencies spotlessCheck)
-          || true
       - name: ./gradlew build
-        run: ./gradlew build
+        run: .github/gradlew-retry.sh build
